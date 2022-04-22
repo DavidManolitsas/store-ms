@@ -1,2 +1,6 @@
-# Project exclude paths
-/target/
+.idea/
+*.iml
+*.iws
+.DS_Store
+target/
+log/
