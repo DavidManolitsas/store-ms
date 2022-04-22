@@ -20,8 +20,10 @@ spring:
       data-locations:
         - classpath:data.sql
   security:
-    oatuh2:
+    oauth2:
       resourceserver:
         jwt:
           issuer-uri: https://dev-zhd4iadn.us.auth0.com/
           jwk-set-uri: https://dev-zhd4iadn.us.auth0.com/.well-known/jwks.json
+auth0:
+  audience: https://auth.manolitsas.david/

@@ -8,8 +8,9 @@ Kong API Gateway with more information found on the
 
 ## Build and Run Project in a Docker container behind Kong API Gateway
 
-To build the Docker container run the following Docker command:
+To build the Docker container run the following Docker commands:
 ```bash
+mvn clean sortpom:sort fmt:format install
 docker build -t store-ms .
 ```
 

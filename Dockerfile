@@ -1,6 +1,6 @@
 FROM openjdk:11
 
 VOLUME /app
-COPY target/java-streams-1.0.0.jar /app/java-streams-1.0.0.jar
+COPY target/store-ms-1.jar /app/store-ms-1.jar
 WORKDIR /app
-CMD java -jar java-streams-1.0.0.jar
+CMD java -jar store-ms-1.jar
