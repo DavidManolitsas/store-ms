@@ -21,7 +21,7 @@ spring:
         - classpath:data.sql
   security:
     oauth2:
-      resourceserver:
+      resource-server:
         jwt:
           issuer-uri: https://dev-zhd4iadn.us.auth0.com/
           jwk-set-uri: https://dev-zhd4iadn.us.auth0.com/.well-known/jwks.json

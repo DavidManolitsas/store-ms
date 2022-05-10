@@ -1,8 +1,8 @@
 package com.manolitsas.david.module;
 
 import com.manolitsas.david.entity.Customer;
-import com.manolitsas.david.model.CreateCustomerRequest;
-import com.manolitsas.david.model.CustomerResponse;
+import com.manolitsas.david.model.request.CreateCustomerRequest;
+import com.manolitsas.david.model.response.CustomerResponse;
 import com.manolitsas.david.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

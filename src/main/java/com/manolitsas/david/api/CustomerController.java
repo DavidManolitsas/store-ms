@@ -1,7 +1,7 @@
 package com.manolitsas.david.api;
 
-import com.manolitsas.david.model.CreateCustomerRequest;
-import com.manolitsas.david.model.CustomerResponse;
+import com.manolitsas.david.model.request.CreateCustomerRequest;
+import com.manolitsas.david.model.response.CustomerResponse;
 import com.manolitsas.david.module.CustomerModule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

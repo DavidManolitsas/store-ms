@@ -1,4 +1,4 @@
-package com.manolitsas.david.model;
+package com.manolitsas.david.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.manolitsas.david.entity.Order;

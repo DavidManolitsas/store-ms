@@ -1,4 +1,4 @@
-package com.manolitsas.david.model;
+package com.manolitsas.david.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;

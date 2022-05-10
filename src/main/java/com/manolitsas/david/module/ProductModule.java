@@ -2,8 +2,8 @@ package com.manolitsas.david.module;
 
 import com.manolitsas.david.entity.OrderLine;
 import com.manolitsas.david.entity.Product;
-import com.manolitsas.david.model.ProductsOrderedRequest;
-import com.manolitsas.david.model.ProductsResponse;
+import com.manolitsas.david.model.request.ProductsOrderedRequest;
+import com.manolitsas.david.model.response.ProductsResponse;
 import com.manolitsas.david.repository.OrderRepository;
 import com.manolitsas.david.repository.ProductRepository;
 import java.util.Comparator;

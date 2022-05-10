@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import org.springframework.validation.annotation.Validated;
 
-@Getter
 @Validated
-public class CreateCustomerRequest {
+@Getter
+public class OrderLineModel {
 
-  @JsonProperty private String name;
+  @JsonProperty private Long productId;
 
-  @JsonProperty private String tier;
+  @JsonProperty private Integer quantity;
 }
