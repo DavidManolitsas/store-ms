@@ -1,6 +1,7 @@
 package com.manolitsas.david.api;
 
 import com.manolitsas.david.model.request.CreateOrderRequest;
+import com.manolitsas.david.model.request.OrderStatusRequest;
 import com.manolitsas.david.model.response.DailySummaryResponse;
 import com.manolitsas.david.model.response.OrderResponse;
 import com.manolitsas.david.model.response.OrdersResponse;
@@ -21,6 +22,11 @@ public class OrderController {
   @PostMapping("/order")
   public ResponseEntity<OrderResponse> createOrder(@RequestBody CreateOrderRequest request) {
     return ResponseEntity.ok(orderModule.createOrder(request));
+  }
+
+  @PostMapping("/order/update/status")
+  public ResponseEntity<OrderResponse> updateOrderStatus(@RequestBody OrderStatusRequest request) {
+    return ResponseEntity.ok(orderModule.updateOrderStatus(request));
   }
 
   @GetMapping("/order/{id}")

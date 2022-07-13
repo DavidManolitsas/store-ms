@@ -6,6 +6,7 @@ import com.manolitsas.david.entity.OrderLine;
 import com.manolitsas.david.entity.Product;
 import com.manolitsas.david.model.OrderLineModel;
 import com.manolitsas.david.model.request.CreateOrderRequest;
+import com.manolitsas.david.model.request.OrderStatusRequest;
 import com.manolitsas.david.model.response.DailySummaryResponse;
 import com.manolitsas.david.model.response.OrderResponse;
 import com.manolitsas.david.model.response.OrdersResponse;
@@ -102,6 +103,20 @@ public class OrderModule {
 
     return OrderResponse.builder().order(order).build();
   }
+
+  public OrderResponse updateOrderStatus(OrderStatusRequest request) {
+    var order = orderRepository.findById(request.getOrderId()).orElse(null);
+
+    if (order == null) {
+      log.info("Order {} not found", request.getOrderId());
+      return null;
+    }
+
+    order.setStatus(request.getStatus());
+    orderRepository.save(order);
+    return OrderResponse.builder().order(order).build();
+  }
+
 
   public OrdersResponse getAllControllerOrders() {
     return OrdersResponse.builder()
