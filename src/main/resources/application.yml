@@ -26,4 +26,6 @@ spring:
           issuer-uri: https://dev-zhd4iadn.us.auth0.com/
           jwk-set-uri: https://dev-zhd4iadn.us.auth0.com/.well-known/jwks.json
 auth0:
-  audience: https://auth.manolitsas.david/
+  client-id: ${CLIENT_ID}
+  client-secret: ${CLIENT_SECRET}
+  audience: https://com.manolitsas.david/

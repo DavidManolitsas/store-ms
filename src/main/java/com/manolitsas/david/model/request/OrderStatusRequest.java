@@ -1,6 +1,5 @@
 package com.manolitsas.david.model.request;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import org.springframework.validation.annotation.Validated;
@@ -9,6 +8,6 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class OrderStatusRequest {
 
-    @JsonProperty private Long orderId;
-    @JsonProperty private String status;
+  @JsonProperty private Long orderId;
+  @JsonProperty private String status;
 }
