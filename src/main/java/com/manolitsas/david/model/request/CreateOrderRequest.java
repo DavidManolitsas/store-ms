@@ -1,7 +1,7 @@
 package com.manolitsas.david.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.manolitsas.david.model.OrderLineModel;
+import com.manolitsas.david.model.OrderLine;
 import java.util.List;
 import lombok.Getter;
 import org.springframework.validation.annotation.Validated;
@@ -12,5 +12,5 @@ public class CreateOrderRequest {
 
   @JsonProperty private Long customerId;
 
-  @JsonProperty private List<OrderLineModel> orderLines;
+  @JsonProperty private List<OrderLine> orderLines;
 }

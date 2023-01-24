@@ -20,6 +20,7 @@ public class JwtUtil {
     try {
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);
+      log.info("Getting bearer token...");
 
       JSONObject requestBody = new JSONObject();
       requestBody.put("client_id", clientId);
@@ -32,6 +33,7 @@ public class JwtUtil {
       var response =
           restTemplate.exchange(oauthUri, HttpMethod.POST, request, TokenResponse.class).getBody();
 
+      System.out.println(response.getAccessToken());
       return response.getAccessToken();
     } catch (JSONException e) {
       e.printStackTrace();

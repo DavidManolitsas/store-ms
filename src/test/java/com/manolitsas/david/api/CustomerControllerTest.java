@@ -6,9 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.manolitsas.david.entity.Customer;
-import com.manolitsas.david.model.request.CreateCustomerRequest;
-import com.manolitsas.david.model.response.CustomerResponse;
+import com.manolitsas.david.model.Customer;
 import com.manolitsas.david.module.CustomerModule;
 import com.manolitsas.david.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -44,10 +42,7 @@ public class CustomerControllerTest {
   @Test
   void givenCreateCustomer_whenValidRequest_thenCreateCustomer() throws Exception {
     when(customerModule.getCustomer(any(Long.class)))
-        .thenReturn(
-            CustomerResponse.builder()
-                .customer(Customer.builder().id(11L).name("Jane Doe").tier("Gold").build())
-                .build());
+        .thenReturn(Customer.builder().id(11L).name("Jane Doe").tier("Gold").build());
 
     String token =
         jwtUtil.getValidToken(
@@ -61,7 +56,7 @@ public class CustomerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     mapper.writeValueAsString(
-                        CreateCustomerRequest.builder().name("Jane Doe").tier("Gold").build())))
+                        Customer.builder().name("Jane Doe").tier("Gold").build())))
         .andExpect(status().isOk())
         .andReturn();
   }

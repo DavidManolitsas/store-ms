@@ -1,15 +1,12 @@
 package com.manolitsas.david.module;
 
-import com.manolitsas.david.entity.Customer;
-import com.manolitsas.david.entity.Order;
-import com.manolitsas.david.entity.OrderLine;
-import com.manolitsas.david.entity.Product;
-import com.manolitsas.david.model.OrderLineModel;
+import com.manolitsas.david.model.Customer;
+import com.manolitsas.david.model.Order;
+import com.manolitsas.david.model.OrderLine;
+import com.manolitsas.david.model.Product;
 import com.manolitsas.david.model.request.CreateOrderRequest;
 import com.manolitsas.david.model.request.OrderStatusRequest;
 import com.manolitsas.david.model.response.DailySummaryResponse;
-import com.manolitsas.david.model.response.OrderResponse;
-import com.manolitsas.david.model.response.OrdersResponse;
 import com.manolitsas.david.model.response.RevenueResponse;
 import com.manolitsas.david.repository.CustomerRepository;
 import com.manolitsas.david.repository.OrderRepository;
@@ -36,7 +33,7 @@ public class OrderModule {
   private final ProductRepository productRepository;
   private static final DecimalFormat df = new DecimalFormat("0.00");
 
-  public OrderResponse createOrder(CreateOrderRequest request) {
+  public Order createOrder(CreateOrderRequest request) {
     LocalDate today = LocalDate.now();
     List<OrderLine> orderLines = new ArrayList<>();
 
@@ -56,12 +53,12 @@ public class OrderModule {
             .deliveryDate(today.plusDays(14))
             .build();
 
-    for (OrderLineModel orderLine : request.getOrderLines()) {
-      Product product = productRepository.findById(orderLine.getProductId()).orElse(null);
+    for (OrderLine orderLine : request.getOrderLines()) {
+      Product product = productRepository.findById(orderLine.getProduct().getId()).orElse(null);
 
       if (product == null) {
         // TODO: 10/5/2022 error handling not found 404
-        log.info("Product {} not found", orderLine.getProductId());
+        log.info("Product {} not found", orderLine.getProduct().getId());
         return null;
       }
 
@@ -80,10 +77,10 @@ public class OrderModule {
     order.setTotal(orderTotal);
     orderRepository.save(order);
 
-    return OrderResponse.builder().order(order).build();
+    return order;
   }
 
-  public OrderResponse getOrderById(Long id) {
+  public Order getOrderById(Long id) {
     Order order = orderRepository.findById(id).orElse(null);
 
     if (order == null || order.getOrderLines() == null) {
@@ -101,10 +98,10 @@ public class OrderModule {
       order.setTotal(total);
     }
 
-    return OrderResponse.builder().order(order).build();
+    return order;
   }
 
-  public OrderResponse updateOrderStatus(OrderStatusRequest request) {
+  public Order updateOrderStatus(OrderStatusRequest request) {
     var order = orderRepository.findById(request.getOrderId()).orElse(null);
 
     if (order == null) {
@@ -114,57 +111,46 @@ public class OrderModule {
 
     order.setStatus(request.getStatus());
     orderRepository.save(order);
-    return OrderResponse.builder().order(order).build();
+    return order;
   }
 
-  public OrdersResponse getAllControllerOrders() {
-    return OrdersResponse.builder()
-        .orders(
-            orderRepository.findAll().stream()
-                .filter(
-                    o ->
-                        o.getOrderLines().stream()
-                            .anyMatch(
-                                l -> l.getProduct().getCategory().equalsIgnoreCase("Controller")))
-                .collect(Collectors.toList()))
-        .build();
+  public List<Order> getAllControllerOrders() {
+    return orderRepository.findAll().stream()
+        .filter(
+            o ->
+                o.getOrderLines().stream()
+                    .anyMatch(
+                        l -> l.getProduct().getCategory().equalsIgnoreCase("Controller")))
+        .collect(Collectors.toList());
   }
 
-  public OrdersResponse getRecentOrders(int limit) {
-    return OrdersResponse.builder()
-        .orders(
-            orderRepository.findAll().stream()
-                .sorted(Comparator.comparing(Order::getOrderDate).reversed())
-                .limit(limit)
-                .collect(Collectors.toList()))
-        .build();
+  public List<Order> getRecentOrders(int limit) {
+    return orderRepository.findAll().stream()
+        .sorted(Comparator.comparing(Order::getOrderDate).reversed())
+        .limit(limit)
+        .collect(Collectors.toList());
   }
 
-  public OrdersResponse getOrdersByDate(String date) {
+  public List<Order> getOrdersByDate(String date) {
     LocalDate orderDate = LocalDate.parse(date);
-    return OrdersResponse.builder()
-        .orders(
-            orderRepository.findAll().stream()
-                .filter(o -> o.getOrderDate().equals(orderDate))
-                .peek(
-                    o ->
-                        log.info(
-                            "Order {} [Customer: {} {}, Order Date: {}, {}]",
-                            o.getId(),
-                            o.getCustomer().getId(),
-                            o.getCustomer().getName(),
-                            o.getOrderDate(),
-                            o.getStatus()))
-                .collect(Collectors.toList()))
-        .build();
+    return orderRepository.findAll().stream()
+        .filter(o -> o.getOrderDate().equals(orderDate))
+        .peek(
+            o ->
+                log.info(
+                    "Order {} [Customer: {} {}, Order Date: {}, {}]",
+                    o.getId(),
+                    o.getCustomer().getId(),
+                    o.getCustomer().getName(),
+                    o.getOrderDate(),
+                    o.getStatus()))
+        .collect(Collectors.toList());
   }
 
   public RevenueResponse getMonthRevenue(String month, int year) {
     LocalDate start =
         LocalDate.of(year, Month.valueOf(month.toUpperCase(Locale.ROOT)).getValue(), 1);
     LocalDate end = start.plusMonths(1);
-
-    log.info("Getting revenue for the month of {}", month);
 
     return RevenueResponse.builder()
         .month(month)

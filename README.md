@@ -1,35 +1,49 @@
 # Store Microservice
 
 This project is a mock storefront used to demonstrate the functionality and use cases for Java Streams. 
-Additionally, it has also been developed with the intention for it to be secured behind a 
-Kong API Gateway with more information found on the 
-[store-kong-api-gateway](https://github.com/DavidManolitsas/store-kong-api-gateway) project.
 
+## Setup
 
-## Build and Run Project in a Docker container behind Kong API Gateway
+Set the following environment variables before the Build and Run steps:
 
-To build the Docker container run the following Docker commands:
 ```bash
-mvn clean sortpom:sort fmt:format install
-docker build -t store-ms .
+export CLIENT_ID=""
+export CLIENT_SECRET=""
+export DATABASE_PWD=""
 ```
 
-To run the project behind Kong API Gateway execute, follow the Build and Run instructions from the
-[store-kong-api-gateway](https://github.com/DavidManolitsas/store-kong-api-gateway) project
 
-Alternatively, to run the project in a standalone Docker container, execute:
-```bash
-docker run -d -p 8080:8080 store-ms
-```
+## Build
 
-## Build and Run Project Locally
+Build the project with Maven:
 
-To sort `pom.xml`,  format code  and build the project run the following command:
 ```bash
 mvn clean sortpom:sort fmt:format install
 ```
 
-To run the project locally, execute the following command:
+or
+
+Build the project with Docker:
 ```bash
-mvn spring-boot:run
+docker build -t store-ms \
+--build-arg CLIENT_ID=${CLIENT_ID} \
+--build-arg CLIENT_SECRET=${CLIENT_SECRET} .
+```
+
+## Run
+
+Run the `.jar` package:
+
+```bash
+java -jar ./target/store-ms-1.jar
+```
+
+or
+
+Run with Docker:
+
+```bash
+docker run -d -p 8080:8080 \
+-e DATABASE_PWD=${DATABASE_PWD} \
+store-ms
 ```

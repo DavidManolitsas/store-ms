@@ -1,6 +1,10 @@
 name: Java Maven CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - "feature/**"
+      - "develop"
 
 jobs:
   build:
@@ -16,4 +20,4 @@ jobs:
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-        run: mvn clean install
+        run: mvn clean sortpom:sort fmt:format install

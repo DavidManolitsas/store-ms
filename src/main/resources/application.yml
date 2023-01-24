@@ -4,21 +4,13 @@ server:
     context-path: /
 spring:
   datasource:
-    url: jdbc:h2:mem:db
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://java-stream-store-database.cwcxq6ok3cmm.ap-southeast-2.rds.amazonaws.com:3306/java_stream_store_database
+    username: admin
+    password: ${DATABASE_PWD}
   jpa:
     hibernate:
-      ddl-auto: create
-    database-platform: org.hibernate.dialect.H2Dialect
+      ddl-auto: update
     defer-datasource-initialization: true
-  h2:
-    console.enabled: true
-  sql:
-    init:
-      data-locations:
-        - classpath:data.sql
   security:
     oauth2:
       resource-server:

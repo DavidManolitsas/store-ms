@@ -1,14 +1,14 @@
 -- customer
-INSERT INTO CUSTOMER (id, name, tier) VALUES (1, 'Stefan Walker', 'Bronze');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (2, 'Daija Von', 'Bronze');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (3, 'Ariane Rodriguez', 'Silver');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (4, 'Marques Nikolaus', 'Gold');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (5, 'Rachelle Greenfelder', 'Bronze');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (6, 'Larissa White', 'Gold');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (7, 'Fae Heidenreich', 'Silver');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (8, 'Dino Will', 'Gold');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (9, 'Eloy Stroman', 'Silver');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (10, 'Brisa O''Connell', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (1, 'Stefan Walker', 'Bronze');
+INSERT INTO customer (id, name, tier) VALUES (2, 'Daija Von', 'Bronze');
+INSERT INTO customer (id, name, tier) VALUES (3, 'Ariane Rodriguez', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (4, 'Marques Nikolaus', 'Gold');
+INSERT INTO customer (id, name, tier) VALUES (5, 'Rachelle Greenfelder', 'Bronze');
+INSERT INTO customer (id, name, tier) VALUES (6, 'Larissa White', 'Gold');
+INSERT INTO customer (id, name, tier) VALUES (7, 'Fae Heidenreich', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (8, 'Dino Will', 'Gold');
+INSERT INTO customer (id, name, tier) VALUES (9, 'Eloy Stroman', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (10, 'Brisa O''Connell', 'Silver');
 -- products
 INSERT INTO product (id, name, category, price) VALUES (1, 'Xbox Series S','Console', 499.95);
 INSERT INTO product (id, name, category, price) VALUES (2, 'Xbox Series X','Console', 749.95);
