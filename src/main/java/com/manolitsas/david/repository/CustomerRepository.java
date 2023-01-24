@@ -1,6 +1,6 @@
 package com.manolitsas.david.repository;
 
-import com.manolitsas.david.entity.Customer;
+import com.manolitsas.david.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

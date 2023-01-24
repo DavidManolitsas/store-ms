@@ -1,14 +1,14 @@
 -- customer
-INSERT INTO CUSTOMER (id, name, tier) VALUES (1, 'Stefan Walker', 'Bronze');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (2, 'Daija Von', 'Bronze');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (3, 'Ariane Rodriguez', 'Silver');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (4, 'Marques Nikolaus', 'Gold');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (5, 'Rachelle Greenfelder', 'Bronze');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (6, 'Larissa White', 'Gold');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (7, 'Fae Heidenreich', 'Silver');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (8, 'Dino Will', 'Gold');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (9, 'Eloy Stroman', 'Silver');
-INSERT INTO CUSTOMER (id, name, tier) VALUES (10, 'Brisa O''Connell', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (1, 'Stefan Walker', 'Bronze');
+INSERT INTO customer (id, name, tier) VALUES (2, 'Daija Von', 'Bronze');
+INSERT INTO customer (id, name, tier) VALUES (3, 'Ariane Rodriguez', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (4, 'Marques Nikolaus', 'Gold');
+INSERT INTO customer (id, name, tier) VALUES (5, 'Rachelle Greenfelder', 'Bronze');
+INSERT INTO customer (id, name, tier) VALUES (6, 'Larissa White', 'Gold');
+INSERT INTO customer (id, name, tier) VALUES (7, 'Fae Heidenreich', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (8, 'Dino Will', 'Gold');
+INSERT INTO customer (id, name, tier) VALUES (9, 'Eloy Stroman', 'Silver');
+INSERT INTO customer (id, name, tier) VALUES (10, 'Brisa O''Connell', 'Silver');
 -- products
 INSERT INTO product (id, name, category, price) VALUES (1, 'Xbox Series S','Console', 499.95);
 INSERT INTO product (id, name, category, price) VALUES (2, 'Xbox Series X','Console', 749.95);
@@ -46,16 +46,16 @@ INSERT INTO product (id, name, category, price) VALUES (33,'Overwatch', 'Games',
 INSERT INTO product (id, name, category, price) VALUES (34,'F1 2021', 'Games', 19.99);
 INSERT INTO product (id, name, category, price) VALUES (35,'It Takes Two', 'Games', 59.95);
 -- orders
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (1, 3,'Pending', '2021-02-28', '2021-03-08');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (2, 6,'Pending', '2021-02-28', '2021-03-05');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (3, 4,'Delivered', '2021-04-10', '2021-04-18');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (4, 2,'Shipped', '2021-03-22', '2021-03-27');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (5, 3,'Pending', '2021-03-04', '2021-03-12');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (6, 7,'Delivered', '2021-03-30', '2021-04-07');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (7, 1,'Shipped', '2021-03-05', '2021-03-09');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (8, 2,'Pending', '2021-03-27', '2021-04-05');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (9, 8,'Pending', '2021-04-14', '2021-04-18');
-INSERT INTO orders (id, customer_id, status, order_date, delivery_date) VALUES (10,9,'Pending', '2021-04-22', '2021-04-29');
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (1, 3,'Pending'  , '2021-02-28', '2021-03-08', 614.62);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (2, 6,'Pending'  , '2021-02-28', '2021-03-05', 699.90);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (3, 4,'Delivered', '2021-04-10', '2021-04-18', 15.99);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (4, 2,'Shipped'  , '2021-03-22', '2021-03-27', 194.90);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (5, 3,'Pending'  , '2021-03-04', '2021-03-12', 32.98);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (6, 7,'Delivered', '2021-03-30', '2021-04-07', 299.80);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (7, 1,'Shipped'  , '2021-03-05', '2021-03-09', 769.94);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (8, 2,'Pending'  , '2021-03-27', '2021-04-05', 749.95);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (9, 8,'Pending'  , '2021-04-14', '2021-04-18', 859.98);
+INSERT INTO orders (id, customer_id, status, order_date, delivery_date, total) VALUES (10,9,'Pending'  , '2021-04-22', '2021-04-29', 484.82);
 -- order lines
 -- order 1
 INSERT INTO order_line(order_id, product_id, quantity) VALUES (1, 4, 1);

@@ -1,4 +1,4 @@
-package com.manolitsas.david.entity;
+package com.manolitsas.david.model;
 
 import javax.persistence.*;
 import lombok.Data;

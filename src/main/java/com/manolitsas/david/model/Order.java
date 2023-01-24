@@ -1,17 +1,19 @@
-package com.manolitsas.david.entity;
+package com.manolitsas.david.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Setter
 @Table(name = "orders")
 public class Order {
 

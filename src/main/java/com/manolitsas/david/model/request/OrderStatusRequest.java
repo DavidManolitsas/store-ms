@@ -1,4 +1,4 @@
-package com.manolitsas.david.model;
+package com.manolitsas.david.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,9 +6,8 @@ import org.springframework.validation.annotation.Validated;
 
 @Getter
 @Validated
-public class CreateCustomerRequest {
+public class OrderStatusRequest {
 
-  @JsonProperty private String name;
-
-  @JsonProperty private String tier;
+  @JsonProperty private Long orderId;
+  @JsonProperty private String status;
 }
