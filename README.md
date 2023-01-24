@@ -47,3 +47,11 @@ docker run -d -p 8080:8080 \
 -e DATABASE_PWD=${DATABASE_PWD} \
 store-ms
 ```
+
+## Test
+
+You can test the service's status with the following curl command:
+
+```bash
+curl -i http://localhost:8080/actuator/health
+```

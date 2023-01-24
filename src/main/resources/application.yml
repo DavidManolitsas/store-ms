@@ -21,3 +21,16 @@ auth0:
   client-id: ${CLIENT_ID}
   client-secret: ${CLIENT_SECRET}
   audience: https://com.manolitsas.david/
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
+
+
